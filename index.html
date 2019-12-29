@@ -1,0 +1,46 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="drop-area">
+      <form class="my-form">
+        <p>Selecteer een file via het file dialog of door een bestand in het omkaderde gebied te slepen</p>
+        <input type="file" id="fileElem" multiple accept="application/pdf" onchange="handleFiles(this.files)">
+        <label class="button" for="fileElem">Selecteer file</label>
+      </form>
+    </div>
+    <div id="resp-table">
+      <div id="resp-table-caption">
+	Ing Mutaties
+      </div>
+      <div id="resp-table-header">
+	<div class="table-header-cell">
+          Datum
+        </div>
+        <div class="table-header-cell">
+          Naam
+        </div>
+        <div class="table-header-cell">
+          Soort
+        </div>
+        <div class="table-header-cell">
+          Bedrag
+        </div>
+        <div class="table-header-cell">
+          IBAN
+        </div>
+        <div class="table-header-cell">
+          Omschrijving
+        </div>
+      </div>
+      <div id="resp-table-body">
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/FileSaver.js"></script>
+  <script type="text/javascript" src="js/pdf2csv.js"></script>
+
+</script>
+  
+</html>
