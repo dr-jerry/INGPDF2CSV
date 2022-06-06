@@ -42,6 +42,7 @@ function parseLine(line, node) {
     var lineNr = 0;
     var date = line.match(/^\((\d{2}-\d{2}-\d{4})\)/);
     if (date) {
+	let bedrag = 0.0
 	var row = document.createElement("div");
 	row.classList.add("resp-table-row");
 	var cells = [], colls = [];
@@ -53,7 +54,10 @@ function parseLine(line, node) {
 	}
 	var multipla = /^\(\+\)/m.test(line) ? 1 : -1
 	try {
-	    var bedrag = multipla * parseFloat(line.match(/^1 0 0 1 4[789]\d.*\n\(([\d,.]+)\)/m)[1].replace(".","").replace(",","."));
+  	    if (/CZ Groep/m.test(line)) 
+	       console.log("found")
+
+	    bedrag = multipla * parseFloat(line.match(/^1 0 0 1 4[6789]\d.*\n\([-+] ([\d,.]+)\)/m)[1].replace(".","").replace(",","."));
 	    if (Math.abs(bedrag) > 3000) {
 		console.log("hoog")
 	    }
