@@ -52,15 +52,10 @@ function parseLine(line, node) {
 	    cells[i].classList.add("table-body-cell");
 	    row.appendChild(cells[i]);
 	}
-	var multipla = /^\(\+\)/m.test(line) ? 1 : -1
 	try {
-  	    if (/CZ Groep/m.test(line)) 
-	       console.log("found")
-
-	    bedrag = multipla * parseFloat(line.match(/^1 0 0 1 4[6789]\d.*\n\([-+] ([\d,.]+)\)/m)[1].replace(".","").replace(",","."));
-	    if (Math.abs(bedrag) > 3000) {
-		console.log("hoog")
-	    }
+	    let bedragField = line.match(/^1 0 0 1 4[6789]\d.*\n\(([-+]) ([\d,.]+)\)/m)
+	    bedrag = (bedragField[1].startsWith('-') ? -1 : 1)
+		* parseFloat(bedragField[2].replace(".","").replace(",","."));
 	} catch (e) {
 	    console.log(lineNr + " error is " + e +"\n" +line);
 	}
